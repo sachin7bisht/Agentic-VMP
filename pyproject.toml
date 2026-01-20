@@ -1,0 +1,26 @@
+[project]
+name = "vmp-2026"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "email-validator>=2.3.0",
+    "faiss-cpu>=1.13.2",
+    "fastapi>=0.128.0",
+    "jinja2>=3.1.6",
+    "langchain>=1.2.3",
+    "langchain-community>=0.4.1",
+    "langchain-core>=1.2.7",
+    "langchain-openai>=1.1.7",
+    "langchain-text-splitters>=1.1.0",
+    "langgraph>=1.0.6",
+    "pandas>=2.3.3",
+    "pydantic>=2.12.5",
+    "python-dateutil>=2.9.0.post0",
+    "python-dotenv>=1.2.1",
+    "sqlalchemy>=2.0.45",
+    "structlog>=25.5.0",
+    "uvicorn>=0.40.0",
+    "pypdf>=5.0.0",
+]

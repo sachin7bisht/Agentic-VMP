@@ -1,0 +1,28 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+env/
+venv/
+
+# Environment Variables (Secrets)
+.env
+
+# System Files
+.DS_Store
+
+# Database and Storage
+*.db
+*.sqlite3
+data/vector_store/
+data/sql/*.db
+
+# Logs
+logs/
+*.log

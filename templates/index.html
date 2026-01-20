@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentia Vendor Portal</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-robot"></i> Agentia <span class="badge">AI</span>
+            </div>
+
+            <div class="config-box">
+                <h3><i class="fa-solid fa-id-card"></i> Simulation Identity</h3>
+                <label>Sender Email (Vendor)</label>
+                <input type="email" id="senderEmail" value="jchavez@gmail.com">
+
+                <label>Thread ID (Session)</label>
+                <input type="text" id="threadId" value="web_session_01">
+                <button onclick="resetSession()" class="btn-secondary">New Session</button>
+            </div>
+
+            <div class="status-panel">
+                <h3>System Status</h3>
+                <div class="status-item">
+                    <span class="dot green"></span> SQL: Sync Enabled
+                </div>
+                <div class="status-item">
+                    <span class="dot green"></span> CSV: Write-Back Active
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-area">
+            <div class="chat-header">
+                <h2>Vendor Support Agent</h2>
+                <p>Connected to: <strong>Vendor Master Database</strong></p>
+            </div>
+
+            <div class="chat-history" id="chatHistory">
+                <div class="message assistant">
+                    <div class="bubble">
+                        Hello! I am the Agentia AI. I can help you check invoice status, update your profile, or answer
+                        policy questions.
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-area">
+                <input type="text" id="userMessage"
+                    placeholder="Type here (e.g., 'Update my phone number to 9998887777')..."
+                    onkeypress="handleEnter(event)">
+                <button onclick="sendMessage()" id="sendBtn"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+
+</html>

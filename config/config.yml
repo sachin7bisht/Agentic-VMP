@@ -1,0 +1,18 @@
+# ==========================================
+# File: config/config.yml
+# ==========================================
+APP_NAME: "VendorMasterAI_Enterprise"
+ENV: "development"
+
+# LLM Selection
+LLM_PROVIDER: "openai"
+OPENAI_MODEL_NAME: "gpt-4o"
+GEMINI_MODEL_NAME: "gemini-1.5-pro"
+
+# Business Logic
+MAX_RETRIES: 5
+SIMILARITY_THRESHOLD: 0.80
+
+# File Naming Overrides
+SQL_DB_NAME: "production_master.db"
+VECTOR_STORE_DIR_NAME: "policy_index_v1"

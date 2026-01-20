@@ -1,0 +1,6 @@
+vendor_id,name,email,phone,address,company,role,invoice_id,amount,status,due_date,invoice_date
+V7755,Aaron Roberts,jchavez@gmail.com,0011223355,"862, Main Street, City3",Brown Inc,Procurement Manager,INV-1638,341259.75,Overdue,2025-09-07,2025-08-08
+V8858,Peter Reed,sotochristopher@hotmail.com,7724881106.0,"450, Main Street, City13","Garcia, Houston and Best",Supply Chain Lead,INV-4340,2222,Pending,2025-09-08,2025-08-09
+V8296,Amanda Torres,evelynstewart@rhodes-bradley.org,9383051470.0,"421, Main Street, City7","Brooks, Williams and Terrell",Supply Chain Lead,INV-9879,30401.98,Paid,2025-09-05,2025-08-06
+V2206,Stephanie Sloan,uholden@ramirez-cline.com,8150180523.0,"971, Main Street, City10",Smith-Spencer,Finance Officer,INV-3505,207218.5,Pending,2025-08-21,2025-07-22
+V2308,Joshua Dudley,ebony02@brady-hayes.com,1122334455,"268, Main Street, City10","Manning, Robinson and Alexander",Supply Chain Lead,INV-6806,128811.5,Paid,2025-10-12,2025-09-12
