@@ -15,8 +15,6 @@ RUN apt-get update && \
     gnupg \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Azure CLI
-RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 
 # Install Docker CLI (for building images in Jenkins)
 RUN apt-get update && \
