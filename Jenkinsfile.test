@@ -1,0 +1,97 @@
+/*
+ * VMP-2026 Tests Pipeline
+ */
+
+pipeline {
+    agent any
+    
+    environment {
+        PYTHON_VERSION = '3.12'
+        PYTHONPATH = "${WORKSPACE}"
+        // Keys can be injected via Jenkins Credentials Binding if needed
+    }
+    
+    triggers {
+        pollSCM('* * * * *')
+    }
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                echo '📦 Checking out code...'
+                checkout scm
+            }
+        }
+        
+        stage('Setup Environment') {
+            steps {
+                echo '🐍 Setting up Python environment...'
+                sh '''
+                    set -e
+                    config_uv() {
+                        curl -LsSf https://astral.sh/uv/install.sh | sh
+                        export PATH="$HOME/.local/bin:$PATH"
+                        
+                        # Use temp directories for uv cache to avoid permission issues
+                        export UV_PYTHON_INSTALL_DIR=/tmp/uv/python
+                        export XDG_DATA_HOME=/tmp/.local/share
+                        export XDG_CACHE_HOME=/tmp/.cache
+                        
+                        # Create venv
+                        uv venv --python ${PYTHON_VERSION} .venv
+                    }
+                    config_uv
+                '''
+            }
+        }
+        
+        stage('Install Dependencies') {
+            steps {
+                echo '📥 Installing dependencies...'
+                sh '''
+                    set -e
+                    export PATH="$HOME/.local/bin:$PATH"
+                    
+                    # Activate venv
+                    . .venv/bin/activate
+                    
+                    # Install project deps
+                    uv pip install -r requirements.txt
+                    
+                    # Install test tools
+                    uv pip install pytest pytest-cov
+                '''
+            }
+        }
+        
+        stage('Run Tests') {
+            steps {
+                echo '🧪 Running tests...'
+                sh '''
+                    set -e
+                    export PATH="$HOME/.local/bin:$PATH"
+                    . .venv/bin/activate
+                    
+                    # Run pytest on 'tests/' directory
+                    # Target 'src' for coverage
+                    pytest tests/ \
+                        --verbose \
+                        --junit-xml=test-results.xml \
+                        --cov=src \
+                        --cov-report=xml:coverage.xml \
+                        --cov-report=term \
+                        || true
+                '''
+                
+                junit allowEmptyResults: true, testResults: 'test-results.xml'
+            }
+        }
+    }
+    
+    post {
+        always {
+            echo '🧹 Cleanup...'
+            sh 'rm -rf .venv || true'
+        }
+    }
+}
